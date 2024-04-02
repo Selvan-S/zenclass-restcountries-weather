@@ -42,12 +42,15 @@ function renderAllCards(data) {
 // Creating single card
 function cardFun(cardData) {
   let root = cardData.idd.root;
+  let capital;
   let suffixes;
   try {
     suffixes = cardData.idd.suffixes[0];
+    capital = cardData.capital[0];
   } catch (error) {
     suffixes = "";
     root = "N/A";
+    capital = "N/A";
     console.log(error);
   }
   return `
@@ -61,7 +64,7 @@ function cardFun(cardData) {
             alt="Country flag"
           />
           <div class="card-text">
-            Capital: ${cardData.name.common}<br />Region: ${cardData.region}<br />Country
+            Capital: ${capital}<br />Region: ${cardData.region}<br />Country
             Code: ${root}${suffixes}<br /><span
               data-lat="${cardData.latlng[0]}"
               data-lng="${cardData.latlng[1]}"
